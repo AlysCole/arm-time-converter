@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width" /> 
+    <title>Armageddon Time Converter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/smalot-bootstrap-datetimepicker/2.4.4/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.11/moment-timezone-with-data.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/smalot-bootstrap-datetimepicker/2.4.4/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+    <script src="./bundle.js" type="text/javascript"></script>
+</head>
+<body>
+    <h1>Armageddon Time Converter</h1>
+    <div id="zalanthan-time">
+        It is currently <span id="zalanthan-hour"></span> on the day of <span id="zalanthan-day-name"></span>, the <span id="zalanthan-day"></span> day of the <span id="zalanthan-month"></span>, in the year of <span id="zalanthan-year-name"></span>, year <span id="zalanthan-year"></span> of the <span id="zalanthan-age"></span> age.
+        <br/><br/>
+        <div id="rl-time">
+            <div><b>Local time:</b><br/><em id="local-time"></em></div>
+            <div><b>Server time:</b><br/><em id="edt-time"></em></div>
+        </div>
+    </div>
+    <div id="rl-time-body">
+        <h3>RL Time</h3>
+        <div class="input-append date" id="datetimepicker">
+            <input size="16" type="text" id="datetimepicker-input">
+            <span class="add-on"><i class="icon-th"></i></span>
+            <div class="btn-group timezone-picker" data-toggle="buttons-radio">
+                <button type="button" class="btn" id="local-btn" type="button" title="Local"><i class="fa fa-clock-o" aria-hidden="true"></i></button>
+                <button type="button" class="btn active" id="server-btn" title="Server"><i class="fa fa-globe" aria-hidden="true"></i></button>
+            </div>
+            <button id="today-btn" type="button" class="btn">Today</button>
+        </div>
+    </div>
+    <div id="z-time-body">
+        <h3>Zalanthan Time</h3>
+        <form id="zalanthan-time-form">
+            <div>
+                <select id="hour-selector">
+                    <option disabled selected value="">-- select hour --</option>
+                    <option value="1">before dawn</option>
+                    <option value="2">dawn</option>
+                    <option value="3">early morning</option>
+                    <option value="4">late morning</option>
+                    <option value="5">high sun</option>
+                    <option value="6">early afternoon</option>
+                    <option value="7">late afternoon</option>
+                    <option value="8">dusk</option>
+                    <option value="9">late at night</option>
+                </select>
+            </div>
+            <div>
+                <input id="day-selector" type="number" min="1" max="231" size="20" placeholder="day of month">
+            </div>
+            <div>
+                <select id="month-selector">
+                    <option disabled selected value>-- select month --</option>
+                    <option value="1">Descending Sun</option>
+                    <option value="2">Low Sun</option>
+                    <option value="3">Ascending Sun</option>
+                </select>
+            </div>
+            <div>
+                <input id="year-selector" type="number" min="1" max="77" size ="30" placeholder="year">
+            </div>
+            <div>
+                <input id="age-selector" type="number" placeholder="age">
+            </div>
+        </ul>
+        </form>
+    </div>
+    <h2>Help: Time</h2>
+    <div class="alert alert-info">
+        Refer to Armageddon's <a href="http://armageddon.org/help/view/time">Time</a> help file for more information.
+    </div>
+    <ul class="nav nav-pills">
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#days" role="tab">Days</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#hours" role="tab">Hours</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#months" role="tab">Months</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#conversion" role="tab">Conversion</a>
+    </li>
+    </ul>
+    
+    <div class="tab-content">
+        <div class="tab-pane" id="days" role="tabpanel">
+            <pre><code>Days of the Week (11)
+Ocandra
+Terrin
+Abid
+Cingel
+Nekrete
+Waleuk
+Yochem
+Huegel
+Dzeda
+Barani
+Detal</code></pre>
+        </div>
+        <div class="tab-pane" id="hours" role="tabpanel">
+            <pre><code>Hours in the Day (9)
+before dawn
+dawn
+early morning
+late morning
+high sun
+early afternoon
+late afternoon
+dusk
+late at night</code></pre>
+        </div>
+        <div class="tab-pane" id="months" role="tabpanel">
+            <pre><code>Months in the Year (3)  
+Descending Sun 
+Low Sun 
+Ascending Sun</code></pre>
+        </div>
+        <div class="tab-pane" id="conversion" role="tabpanel">
+            <pre><code>Real Time -> Zalanthan Time  
+     10 RL mins      = 1 ZT hour 
+     1 RL day        = 16 ZT days 
+     1 RL week       = ~0.5 ZT month 
+     1 RL month      = ~2 ZT months 
+     1 RL year       = ~8.5 ZT years
+          
+Zalanthan Time -> Real Time  
+     1 ZT hour       = 10 RL mins 
+     1 ZT day        = 90 RL mins 
+     1 ZT week       = 16.5 RL hours 
+     1 ZT month      = ~2 RL weeks 
+     1 ZT year       = ~43 RL days</code></pre>
+        </div>
+    </div>
+</body>
+</html>

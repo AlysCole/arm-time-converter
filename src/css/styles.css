@@ -1,0 +1,257 @@
+@import url('https://fonts.googleapis.com/css?family=Inconsolata|Playfair+Display|Raleway');
+
+body {
+  font-family: "Inconsolata", mono;
+  font-size: 15px;
+  /*! background-image: url("https://images.pexels.com/photos/459319/pexels-photo-459319.jpeg"); */
+  background-size: cover;
+  background-color: #E0D5B7;
+  padding: 30px 30px;
+  margin: 30px;
+  border: 5px solid #474547;
+  color: #474547;
+}
+
+select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+  font-family: "Raleway", sans-serif;
+  border-radius: 0;
+  color: #474547;
+  background: #B0AA92;
+  border: none;
+  
+}
+
+h1 {
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  font-weight: normal;
+  font-style: italic;
+  font-size: 60px;
+  margin: 60px 0px 30px;
+  padding: 0px 0px;
+  line-height: 1em;
+}
+
+h2, h3, h4, h5 {
+  letter-spacing: 1.5px;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "Playfair Display", sans-serif;
+  font-weight: normal;
+}
+
+h2 {
+  margin: 30px 0 15px;
+  font-size: 40px;
+}
+
+h3 {
+  margin: 30px 0 15px;
+  font-size: 30px;
+}
+
+a {
+  color: inherit;
+  border-bottom: 1px dotted #474547;
+}
+
+a:hover {
+  color: #ad5e39;
+  text-decoration: none;
+  border-bottom: 1px dotted #ad5e39;
+}
+
+div#body {
+  margin: 0 80px;
+}
+
+pre {
+  padding: 10px 10px;
+  color: #474547;
+  font-family: "Inconsolata", mono;
+  border-radius: 0;
+  border: none;
+  border-top: 2px solid #474547;
+  border-bottom: 2px solid #474547;
+  background: none;
+}
+
+.input-append .active {
+  border: 1px solid #ccc;
+}
+
+#time-converter-form {
+  margin: 0 auto;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: baseline;
+  align-content: stretch;
+  justify-content: center;
+}
+
+#rl-time-body, #z-time-body {
+  text-align: center;
+  margin: 10px 0 10px 0;
+  flex-grow: 1;
+}
+
+#zalanthan-time-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: column wrap;
+}
+
+#zalanthan-time-form > div {
+  margin: 0 10px 0 10px;
+}
+
+#zalanthan-time {
+  text-align: center;
+  margin: 20px auto;
+  max-width: 500px;
+}
+
+#rl-time {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+#local-time-container {
+  margin: 5px 0;
+}
+
+#local-time-time {
+  font-size: 30px;
+  line-height: 1.5em;
+}
+
+#local-time-date {
+  font-size: 20px;
+}
+
+#edt-time {
+  font-style: italic;
+}
+
+#datetimepicker-input {
+  width: 40%;
+  border: none;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  border-bottom: 1px solid #474547;
+  color: #474547;
+}
+
+.input-append .add-on, .input-prepend .add-on {
+  height: 1.5em;
+  background: #474547;
+  color: #E0D5B7;
+  border: none;
+}
+
+.add-on .icon-th {
+  background-image: url("https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/img/glyphicons-halflings-white.png")
+}
+
+#today-btn {
+  text-transform: uppercase;
+  border-radius: 0px;
+  margin-left: 5px;
+}
+
+button.btn {
+  font-family: "Inconsolata", serif;
+  height: 2.1em;
+  color: #E0D5B7;
+  background: #474547;
+  border: none;
+  border-radius: 0;
+  text-shadow: none;
+  box-shadow: none;
+}
+
+button.btn:hover {
+  background: #ad5e39;
+  color: #E0D5B7;
+}
+
+.btn-group > .btn:focus, .btn:focus, .btn-group > .btn:active, .btn:active, .btn-group > .btn.active, .btn.active {
+  height: 2.1em;
+  background: #B0AA92;
+  color: #E0D5B7;
+  box-shadow: none;
+  border: none;
+  text-shadow: none;
+  box-shadow: none;
+}
+
+.timezone-picker > #local-btn {
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  border-radius: 0px 0px 0px 0px;
+}
+
+.timezone-picker .fa {
+  margin-bottom: -5px;
+}
+
+.alert, .alert-info {
+  background: #ad5e39;
+  color: #e0d5b7;
+  text-shadow: none;
+  border-radius: 0;
+  border: 1px solid #AD8B72;
+  margin: 0;
+}
+
+.alert > a, .alert-info > a {
+ border-bottom: 1px dotted #e0d5b7;
+}
+
+.alert > a:hover, .alert-info > a:hover {
+  color: #474547;
+  border-bottom: 1px dotted #474547;
+}
+
+.nav-pills {
+  margin-bottom: 0;
+  margin-top: 5px;
+  display: inline-block;
+}
+
+.nav-tabs > li > a,
+.nav-pills > li > a {
+  padding: 5px;
+  margin: 0;
+  margin: 5px 12px;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.nav-pills > .active > a, .nav-pills > .active > a:hover, .nav-pills > .active > a:focus {
+  color:#474547;
+  background: #B0AA92;
+}
+
+#conversion {
+  text-align: initial;
+}
+
+@media screen and (max-width: 500px) {
+  h1 {
+    font-size: 50px;
+  }
+  
+  body {
+    padding: 5px;
+    margin: 5px;
+  }
+
+  div#body {
+    margin: 0 5px;
+  }
+}

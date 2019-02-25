@@ -271,8 +271,11 @@ import './css/styles.css';
       );
     });
 
-    pickerEl.on("changeDate", function() {
-      let val = $("#datetimepicker-input").val();
+    pickerEl.on("changeDate", onChangeDate);
+    pickerInput.on('change', onChangeDate);
+
+    function onChangeDate() {
+      let val = pickerInput.val();
       if (!moment(val, momentFormat, true).isValid()) return false;
 
       console.log("Date changed:", val);
@@ -287,7 +290,7 @@ import './css/styles.css';
           moment.tz(val, momentFormat, "America/New_York").toDate()
         );
       }
-    });
+    }
 
     $("#zalanthan-time-form").change(function(e) {
       let hour = parseInt($("#hour-selector").val()),

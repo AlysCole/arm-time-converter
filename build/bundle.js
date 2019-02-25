@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "410ca75b0aff0947260f"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "e0e0597e4ce5954347d1"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -996,8 +996,11 @@ __webpack_require__(1);
       history.pushState("", document.title, window.location.pathname);
     });
 
-    pickerEl.on("changeDate", function () {
-      let val = $("#datetimepicker-input").val();
+    pickerEl.on("changeDate", onChangeDate);
+    pickerInput.on('change', onChangeDate);
+
+    function onChangeDate() {
+      let val = pickerInput.val();
       if (!moment(val, momentFormat, true).isValid()) return false;
 
       console.log("Date changed:", val);
@@ -1010,7 +1013,7 @@ __webpack_require__(1);
         history.pushState(history.state, "", "?t=" + val);
         setTimeHTML(moment.tz(val, momentFormat, "America/New_York").toDate());
       }
-    });
+    }
 
     $("#zalanthan-time-form").change(function (e) {
       let hour = parseInt($("#hour-selector").val()),

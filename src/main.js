@@ -154,22 +154,34 @@ import './css/styles.css';
   };
 
   const setTimeHTML = function(dateObj, ignoreSelector, keepIntervalRunning) {
+    const currTime = getZTTime(dateObj);
+    const serverTime = moment.tz(dateObj, "America/New_York");
+    const localTime = moment(dateObj);
+    let diff = moment(dateObj).diff(moment());
+
     if (!keepIntervalRunning) {
       clearInterval(realTimeInterval);
       realTimeInterval = false;
-    } else if (!realTimeInterval) {
-      startTimeInterval();
+      $("#time-from-now").text(`(${localTime.fromNow()})`);
+    } else {
+      if (!realTimeInterval) startTimeInterval();
+      diff = 0;
+      $("#time-from-now").text('');
     }
 
-    const currTime = getZTTime(dateObj);
-
-    const serverTime = moment.tz(dateObj, "America/New_York");
-    const localTime = moment(dateObj);
+    // determine the tense in the zalanthan time sentence
+    if (diff < 0) {
+      $("#zalanthan-tense").text("was");
+    } else if (diff > 0) {
+      $("#zalanthan-tense").text("will be");
+    } else {
+      $("#zalanthan-tense").text("is currently");
+    }
 
     $("#local-time-time").text(localTime.format("h:mm:ss A"));
     $("#local-time-date").text(localTime.format("dddd, MMMM D, YYYY"));
     $("#edt-time").text(serverTime.format("h:mm A dddd, MMMM D, YYYY z"));
-    $("#edt-time").attr("href", serverTime.format("#YYYY-MM-DD HH:mm"));
+    $("#edt-time").attr("href", serverTime.format("?t=YYYY-MM-DD HH:mm"));
     $("#zalanthan-hour").text(currTime.hour);
     $("#zalanthan-day-name").text(currTime.day);
     $("#zalanthan-day").text(currTime.dayOfMonth.nth());
@@ -184,12 +196,6 @@ import './css/styles.css';
       $("#month-selector").val(currTime.month);
       $("#year-selector").val(currTime.year);
       $("#age-selector").val(currTime.age);
-    } else {
-      $("#hour-selector").val('');
-      $("#day-selector").val('');
-      $("#month-selector").val('');
-      $("#year-selector").val('');
-      $("#age-selector").val('');
     }
   };
 
@@ -209,20 +215,22 @@ import './css/styles.css';
       "YYYY-MM-DD hh:mm a"
     ];
     let current = moment();
+    let keepIntervalRunning = true;
 
     pickerEl.datetimepicker({
       format: "yyyy-mm-dd hh:ii",
       timezone: "ET"
     });
 
-    if (document.URL.indexOf("#") + 1 > 0) {
+    if (document.URL.indexOf("#") > -1) {
       let hashVal = decodeURI(
         document.URL.slice(document.URL.indexOf("#") + 1)
       );
       current = moment.tz(hashVal, "America/New_York");
+      keepIntervalRunning = false;
     }
 
-    if (location.search) {
+    if (window.location.search) {
       let queries = location.search.substr(1).split("&");
 
       queries = queries.map(function(query) {
@@ -235,6 +243,7 @@ import './css/styles.css';
       });
 
       current = moment.tz(decodeURI(matchQuery[1]), "America/New_York");
+      keepIntervalRunning = false;
     }
 
     pickerInput.val(current.tz("America/New_York").format(momentFormat));
@@ -258,7 +267,7 @@ import './css/styles.css';
       history.pushState(
         "",
         document.title,
-        window.location.pathname + window.location.search
+        window.location.pathname
       );
     });
 
@@ -270,12 +279,10 @@ import './css/styles.css';
       // If set to local time, convert value to New York time and set hash to that value
       if ($("#local-btn").hasClass("active")) {
         let time = moment(val, momentFormat);
-        window.location.hash =
-          "#" +
-          time.tz("America/New_York").format(momentFormat);
+        history.pushState(history.state, "", "?t=" + time.tz("America/New_York").format(momentFormat));
         setTimeHTML(time.toDate());
       } else {
-        window.location.hash = "#" + val;
+        history.pushState(history.state, "", "?t=" + val);
         setTimeHTML(
           moment.tz(val, momentFormat, "America/New_York").toDate()
         );
@@ -307,17 +314,16 @@ import './css/styles.css';
         },
         dateObj = calculateRLTime(zalanthanTime);
 
-      window.location.hash =
-        "#" +
-        encodeURI(
-          moment(dateObj)
-            .tz("America/New_York")
-            .format(momentFormat)
-        );
+      history.pushState(history.state,
+                        "",
+                        "?t=" + encodeURI(
+                          moment(dateObj).tz("America/New_York").format(momentFormat)
+                        ));
 
       setTimeHTML(dateObj, true);
     });
 
-    startTimeInterval();
+    if (keepIntervalRunning)
+      startTimeInterval();
   });
 })();

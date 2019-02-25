@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "38302b8849e2ca4183ec"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "410ca75b0aff0947260f"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -743,7 +743,7 @@ exports.push([module.i, "body {\n  font-family: \"Inconsolata\", mono;\n  font-s
 /* 1 */
 /***/ (function(module, exports) {
 
-module.exports = "<!DOCTYPE html>\n<html>\n<head>\n    <meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width\" /> \n    <title>Armageddon Time Converter</title>\n    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css\" type=\"text/css\">\n    <link rel=\"stylesheet\" type=\"text/css\" media=\"screen\" href=\"https://cdnjs.cloudflare.com/ajax/libs/smalot-bootstrap-datetimepicker/2.4.4/css/bootstrap-datetimepicker.min.css\">\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css\">\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js\" type=\"text/javascript\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/js/bootstrap.min.js\" type=\"text/javascript\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js\" type=\"text/javascript\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.11/moment-timezone-with-data.min.js\" type=\"text/javascript\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/smalot-bootstrap-datetimepicker/2.4.4/js/bootstrap-datetimepicker.min.js\" type=\"text/javascript\"></script>\n</head>\n<body>\n    <h1>Armageddon Time Converter</h1>\n    <div id=\"body\">\n    <div id=\"zalanthan-time\">\n        It is currently <span id=\"zalanthan-hour\"></span> on the day of <span id=\"zalanthan-day-name\"></span>, the <span id=\"zalanthan-day\"></span> day of the <span id=\"zalanthan-month\"></span>, in the year of <span id=\"zalanthan-year-name\"></span>, year <span id=\"zalanthan-year\"></span> of the <span id=\"zalanthan-age\"></span> age.\n        <div id=\"rl-time\">\n            <div id=\"local-time-container\" title=\"Local time\">\n                <div id=\"local-time-time\"></div>\n                <div id=\"local-time-date\"></div>\n            </div>\n            <div>\n                <a id=\"edt-time\" title=\"Server time (Eastern Time)\"></a>\n            </div>\n        </div>\n    </div>\n    <div id=\"time-converter-form\">\n        <div id=\"rl-time-body\">\n            <h3>RL Time</h3>\n            <div class=\"input-append date\" id=\"datetimepicker\">\n                <input size=\"16\" type=\"text\" id=\"datetimepicker-input\">\n                <span class=\"add-on\"><i class=\"icon-th\"></i></span>\n                <div class=\"btn-group timezone-picker\" data-toggle=\"buttons-radio\">\n                    <button type=\"button\" class=\"btn\" id=\"local-btn\" type=\"button\" title=\"Local\"><i class=\"fa fa-clock-o\" aria-hidden=\"true\"></i></button>\n                    <button type=\"button\" class=\"btn active\" id=\"server-btn\" title=\"Server\"><i class=\"fa fa-globe\" aria-hidden=\"true\"></i></button>\n                </div>\n                <button id=\"today-btn\" type=\"button\" class=\"btn\">Today</button>\n            </div>\n        </div>\n        <div id=\"z-time-body\">\n            <h3>Zalanthan Time</h3>\n            <form id=\"zalanthan-time-form\">\n                <div>\n                    <select id=\"hour-selector\">\n                        <option disabled selected value=\"\">-- select hour --</option>\n                        <option value=\"1\">before dawn</option>\n                        <option value=\"2\">dawn</option>\n                        <option value=\"3\">early morning</option>\n                        <option value=\"4\">late morning</option>\n                        <option value=\"5\">high sun</option>\n                        <option value=\"6\">early afternoon</option>\n                        <option value=\"7\">late afternoon</option>\n                        <option value=\"8\">dusk</option>\n                        <option value=\"9\">late at night</option>\n                    </select>\n                </div>\n                <div>\n                    <input id=\"day-selector\" type=\"number\" min=\"1\" max=\"231\" size=\"20\" placeholder=\"day of month\">\n                </div>\n                <div>\n                    <select id=\"month-selector\">\n                        <option disabled selected value>-- select month --</option>\n                        <option value=\"1\">Descending Sun</option>\n                        <option value=\"2\">Low Sun</option>\n                        <option value=\"3\">Ascending Sun</option>\n                    </select>\n                </div>\n                <div>\n                    <input id=\"year-selector\" type=\"number\" min=\"1\" max=\"77\" size =\"30\" placeholder=\"year\">\n                </div>\n                <div>\n                    <input id=\"age-selector\" type=\"number\" placeholder=\"age\">\n                </div>\n        </ul>\n            </form>\n        </div>\n    </div>\n    <h2>Help: Time</h2>\n    <div class=\"alert alert-info\">\n        Refer to Armageddon's <a href=\"http://armageddon.org/help/view/time\">Time</a> help file for more information.\n    </div>\n    <ul class=\"nav nav-pills\">\n    <li class=\"nav-item\">\n        <a class=\"nav-link\" data-toggle=\"tab\" href=\"#days\" role=\"tab\">Days</a>\n    </li>\n    <li class=\"nav-item\">\n        <a class=\"nav-link\" data-toggle=\"tab\" href=\"#hours\" role=\"tab\">Hours</a>\n    </li>\n    <li class=\"nav-item\">\n        <a class=\"nav-link\" data-toggle=\"tab\" href=\"#months\" role=\"tab\">Months</a>\n    </li>\n    <li class=\"nav-item\">\n        <a class=\"nav-link\" data-toggle=\"tab\" href=\"#conversion\" role=\"tab\">Conversion</a>\n    </li>\n    </ul>\n    \n    <div class=\"tab-content\">\n        <div class=\"tab-pane\" id=\"days\" role=\"tabpanel\">\n            <pre><code>Days of the Week (11)\nOcandra\nTerrin\nAbid\nCingel\nNekrete\nWaleuk\nYochem\nHuegel\nDzeda\nBarani\nDetal</code></pre>\n        </div>\n        <div class=\"tab-pane\" id=\"hours\" role=\"tabpanel\">\n            <pre><code>Hours in the Day (9)\nbefore dawn\ndawn\nearly morning\nlate morning\nhigh sun\nearly afternoon\nlate afternoon\ndusk\nlate at night</code></pre>\n        </div>\n        <div class=\"tab-pane\" id=\"months\" role=\"tabpanel\">\n            <pre><code>Months in the Year (3)  \nDescending Sun \nLow Sun \nAscending Sun</code></pre>\n        </div>\n        <div class=\"tab-pane\" id=\"conversion\" role=\"tabpanel\">\n            <pre><code>Real Time -> Zalanthan Time  \n     10 RL mins      = 1 ZT hour \n     1 RL day        = 16 ZT days \n     1 RL week       = ~0.5 ZT month \n     1 RL month      = ~2 ZT months \n     1 RL year       = ~8.5 ZT years\n          \nZalanthan Time -> Real Time  \n     1 ZT hour       = 10 RL mins \n     1 ZT day        = 90 RL mins \n     1 ZT week       = 16.5 RL hours \n     1 ZT month      = ~2 RL weeks \n     1 ZT year       = ~43 RL days</code></pre>\n        </div>\n    </div>\n    </div>\n</body>\n</html>\n"
+module.exports = "<!DOCTYPE html>\n<html>\n<head>\n    <meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width\" /> \n    <title>Armageddon Time Converter</title>\n    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css\" type=\"text/css\">\n    <link rel=\"stylesheet\" type=\"text/css\" media=\"screen\" href=\"https://cdnjs.cloudflare.com/ajax/libs/smalot-bootstrap-datetimepicker/2.4.4/css/bootstrap-datetimepicker.min.css\">\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css\">\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js\" type=\"text/javascript\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/js/bootstrap.min.js\" type=\"text/javascript\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js\" type=\"text/javascript\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.11/moment-timezone-with-data.min.js\" type=\"text/javascript\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/smalot-bootstrap-datetimepicker/2.4.4/js/bootstrap-datetimepicker.min.js\" type=\"text/javascript\"></script>\n</head>\n<body>\n    <h1>Armageddon Time Converter</h1>\n    <div id=\"body\">\n    <div id=\"zalanthan-time\">\n        It <span id=\"zalanthan-tense\"></span> <span id=\"zalanthan-hour\"></span> on the day of <span id=\"zalanthan-day-name\"></span>, the <span id=\"zalanthan-day\"></span> day of the <span id=\"zalanthan-month\"></span>, in the year of <span id=\"zalanthan-year-name\"></span>, year <span id=\"zalanthan-year\"></span> of the <span id=\"zalanthan-age\"></span> age.\n        <div id=\"rl-time\">\n            <div id=\"local-time-container\" title=\"Local time\">\n                <div id=\"local-time-time\"></div>\n                <div id=\"local-time-date\"></div>\n            </div>\n            <div>\n                <a id=\"edt-time\" title=\"Server time (Eastern Time)\"></a>\n            </div>\n            <div id=\"time-from-now\"></div>\n        </div>\n    </div>\n    <div id=\"time-converter-form\">\n        <div id=\"rl-time-body\">\n            <h3>RL Time</h3>\n            <div class=\"input-append date\" id=\"datetimepicker\">\n                <input size=\"16\" type=\"text\" id=\"datetimepicker-input\">\n                <span class=\"add-on\"><i class=\"icon-th\"></i></span>\n                <div class=\"btn-group timezone-picker\" data-toggle=\"buttons-radio\">\n                    <button type=\"button\" class=\"btn\" id=\"local-btn\" type=\"button\" title=\"Local\"><i class=\"fa fa-clock-o\" aria-hidden=\"true\"></i></button>\n                    <button type=\"button\" class=\"btn active\" id=\"server-btn\" title=\"Server\"><i class=\"fa fa-globe\" aria-hidden=\"true\"></i></button>\n                </div>\n                <button id=\"today-btn\" type=\"button\" class=\"btn\">Today</button>\n            </div>\n        </div>\n        <div id=\"z-time-body\">\n            <h3>Zalanthan Time</h3>\n            <form id=\"zalanthan-time-form\">\n                <div>\n                    <select id=\"hour-selector\">\n                        <option disabled selected value=\"\">-- select hour --</option>\n                        <option value=\"1\">before dawn</option>\n                        <option value=\"2\">dawn</option>\n                        <option value=\"3\">early morning</option>\n                        <option value=\"4\">late morning</option>\n                        <option value=\"5\">high sun</option>\n                        <option value=\"6\">early afternoon</option>\n                        <option value=\"7\">late afternoon</option>\n                        <option value=\"8\">dusk</option>\n                        <option value=\"9\">late at night</option>\n                    </select>\n                </div>\n                <div>\n                    <input id=\"day-selector\" type=\"number\" min=\"1\" max=\"231\" size=\"20\" placeholder=\"day of month\">\n                </div>\n                <div>\n                    <select id=\"month-selector\">\n                        <option disabled selected value>-- select month --</option>\n                        <option value=\"1\">Descending Sun</option>\n                        <option value=\"2\">Low Sun</option>\n                        <option value=\"3\">Ascending Sun</option>\n                    </select>\n                </div>\n                <div>\n                    <input id=\"year-selector\" type=\"number\" min=\"1\" max=\"77\" size =\"30\" placeholder=\"year\">\n                </div>\n                <div>\n                    <input id=\"age-selector\" type=\"number\" placeholder=\"age\">\n                </div>\n        </ul>\n            </form>\n        </div>\n    </div>\n    <h2>Help: Time</h2>\n    <div class=\"alert alert-info\">\n        Refer to Armageddon's <a href=\"http://armageddon.org/help/view/time\">Time</a> help file for more information.\n    </div>\n    <ul class=\"nav nav-pills\">\n    <li class=\"nav-item\">\n        <a class=\"nav-link\" data-toggle=\"tab\" href=\"#days\" role=\"tab\">Days</a>\n    </li>\n    <li class=\"nav-item\">\n        <a class=\"nav-link\" data-toggle=\"tab\" href=\"#hours\" role=\"tab\">Hours</a>\n    </li>\n    <li class=\"nav-item\">\n        <a class=\"nav-link\" data-toggle=\"tab\" href=\"#months\" role=\"tab\">Months</a>\n    </li>\n    <li class=\"nav-item\">\n        <a class=\"nav-link\" data-toggle=\"tab\" href=\"#conversion\" role=\"tab\">Conversion</a>\n    </li>\n    </ul>\n    \n    <div class=\"tab-content\">\n        <div class=\"tab-pane\" id=\"days\" role=\"tabpanel\">\n            <pre><code>Days of the Week (11)\nOcandra\nTerrin\nAbid\nCingel\nNekrete\nWaleuk\nYochem\nHuegel\nDzeda\nBarani\nDetal</code></pre>\n        </div>\n        <div class=\"tab-pane\" id=\"hours\" role=\"tabpanel\">\n            <pre><code>Hours in the Day (9)\nbefore dawn\ndawn\nearly morning\nlate morning\nhigh sun\nearly afternoon\nlate afternoon\ndusk\nlate at night</code></pre>\n        </div>\n        <div class=\"tab-pane\" id=\"months\" role=\"tabpanel\">\n            <pre><code>Months in the Year (3)  \nDescending Sun \nLow Sun \nAscending Sun</code></pre>\n        </div>\n        <div class=\"tab-pane\" id=\"conversion\" role=\"tabpanel\">\n            <pre><code>Real Time -> Zalanthan Time  \n     10 RL mins      = 1 ZT hour \n     1 RL day        = 16 ZT days \n     1 RL week       = ~0.5 ZT month \n     1 RL month      = ~2 ZT months \n     1 RL year       = ~8.5 ZT years\n          \nZalanthan Time -> Real Time  \n     1 ZT hour       = 10 RL mins \n     1 ZT day        = 90 RL mins \n     1 ZT week       = 16.5 RL hours \n     1 ZT month      = ~2 RL weeks \n     1 ZT year       = ~43 RL days</code></pre>\n        </div>\n    </div>\n    </div>\n</body>\n</html>\n"
 
 /***/ }),
 /* 2 */
@@ -891,22 +891,34 @@ __webpack_require__(1);
   };
 
   const setTimeHTML = function (dateObj, ignoreSelector, keepIntervalRunning) {
+    const currTime = getZTTime(dateObj);
+    const serverTime = moment.tz(dateObj, "America/New_York");
+    const localTime = moment(dateObj);
+    let diff = moment(dateObj).diff(moment());
+
     if (!keepIntervalRunning) {
       clearInterval(realTimeInterval);
       realTimeInterval = false;
-    } else if (!realTimeInterval) {
-      startTimeInterval();
+      $("#time-from-now").text(`(${localTime.fromNow()})`);
+    } else {
+      if (!realTimeInterval) startTimeInterval();
+      diff = 0;
+      $("#time-from-now").text('');
     }
 
-    const currTime = getZTTime(dateObj);
-
-    const serverTime = moment.tz(dateObj, "America/New_York");
-    const localTime = moment(dateObj);
+    // determine the tense in the zalanthan time sentence
+    if (diff < 0) {
+      $("#zalanthan-tense").text("was");
+    } else if (diff > 0) {
+      $("#zalanthan-tense").text("will be");
+    } else {
+      $("#zalanthan-tense").text("is currently");
+    }
 
     $("#local-time-time").text(localTime.format("h:mm:ss A"));
     $("#local-time-date").text(localTime.format("dddd, MMMM D, YYYY"));
     $("#edt-time").text(serverTime.format("h:mm A dddd, MMMM D, YYYY z"));
-    $("#edt-time").attr("href", serverTime.format("#YYYY-MM-DD HH:mm"));
+    $("#edt-time").attr("href", serverTime.format("?t=YYYY-MM-DD HH:mm"));
     $("#zalanthan-hour").text(currTime.hour);
     $("#zalanthan-day-name").text(currTime.day);
     $("#zalanthan-day").text(currTime.dayOfMonth.nth());
@@ -921,12 +933,6 @@ __webpack_require__(1);
       $("#month-selector").val(currTime.month);
       $("#year-selector").val(currTime.year);
       $("#age-selector").val(currTime.age);
-    } else {
-      $("#hour-selector").val('');
-      $("#day-selector").val('');
-      $("#month-selector").val('');
-      $("#year-selector").val('');
-      $("#age-selector").val('');
     }
   };
 
@@ -942,18 +948,20 @@ __webpack_require__(1);
     const todayBtn = $("#today-btn");
     const formats = [momentFormat, "YYYY-MM-DD hh:mm A", "YYYY-MM-DD hh:mm a"];
     let current = moment();
+    let keepIntervalRunning = true;
 
     pickerEl.datetimepicker({
       format: "yyyy-mm-dd hh:ii",
       timezone: "ET"
     });
 
-    if (document.URL.indexOf("#") + 1 > 0) {
+    if (document.URL.indexOf("#") > -1) {
       let hashVal = decodeURI(document.URL.slice(document.URL.indexOf("#") + 1));
       current = moment.tz(hashVal, "America/New_York");
+      keepIntervalRunning = false;
     }
 
-    if (location.search) {
+    if (window.location.search) {
       let queries = location.search.substr(1).split("&");
 
       queries = queries.map(function (query) {
@@ -966,6 +974,7 @@ __webpack_require__(1);
       });
 
       current = moment.tz(decodeURI(matchQuery[1]), "America/New_York");
+      keepIntervalRunning = false;
     }
 
     pickerInput.val(current.tz("America/New_York").format(momentFormat));
@@ -984,7 +993,7 @@ __webpack_require__(1);
       console.log("Date changed:", val);
 
       // clear hash value
-      history.pushState("", document.title, window.location.pathname + window.location.search);
+      history.pushState("", document.title, window.location.pathname);
     });
 
     pickerEl.on("changeDate", function () {
@@ -995,10 +1004,10 @@ __webpack_require__(1);
       // If set to local time, convert value to New York time and set hash to that value
       if ($("#local-btn").hasClass("active")) {
         let time = moment(val, momentFormat);
-        window.location.hash = "#" + time.tz("America/New_York").format(momentFormat);
+        history.pushState(history.state, "", "?t=" + time.tz("America/New_York").format(momentFormat));
         setTimeHTML(time.toDate());
       } else {
-        window.location.hash = "#" + val;
+        history.pushState(history.state, "", "?t=" + val);
         setTimeHTML(moment.tz(val, momentFormat, "America/New_York").toDate());
       }
     });
@@ -1021,12 +1030,12 @@ __webpack_require__(1);
       },
           dateObj = calculateRLTime(zalanthanTime);
 
-      window.location.hash = "#" + encodeURI(moment(dateObj).tz("America/New_York").format(momentFormat));
+      history.pushState(history.state, "", "?t=" + encodeURI(moment(dateObj).tz("America/New_York").format(momentFormat)));
 
       setTimeHTML(dateObj, true);
     });
 
-    startTimeInterval();
+    if (keepIntervalRunning) startTimeInterval();
   });
 })();
 

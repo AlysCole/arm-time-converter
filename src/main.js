@@ -217,7 +217,7 @@ import './css/styles.css';
     let current = moment();
     let keepIntervalRunning = true;
 
-    pickerEl.datetimepicker({
+    $('#datetimepicker').datetimepicker({
       format: "yyyy-mm-dd hh:ii",
       timezone: "ET"
     });

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Inconsolata|Playfair+Display|Raleway');
+@import url('https://fonts.googleapis.com/css?family=Inconsolata|Playfair+Display:400,400i|Raleway');
 
 body {
   font-family: "Inconsolata", mono;
@@ -26,10 +26,12 @@ h1 {
   font-family: "Playfair Display", serif;
   font-weight: normal;
   font-style: italic;
-  font-size: 60px;
+  font-size: 80px;
+  font-size: 6vw;
   margin: 60px 0px 30px;
   padding: 0px 0px;
   line-height: 1em;
+  letter-spacing: 0.05em;
 }
 
 h2, h3, h4, h5 {
@@ -163,7 +165,7 @@ pre {
   margin-left: 5px;
 }
 
-button.btn {
+.btn {
   font-family: "Inconsolata", serif;
   height: 2.1em;
   color: #E0D5B7;
@@ -174,12 +176,12 @@ button.btn {
   box-shadow: none;
 }
 
-button.btn:hover {
+.btn:hover {
   background: #ad5e39;
   color: #E0D5B7;
 }
 
-.btn-group > .btn:focus, .btn:focus, .btn-group > .btn:active, .btn:active, .btn-group > .btn.active, .btn.active {
+.btn-group > .btn:focus, .btn:focus, .btn-group > .btn:active, .btn:active, .btn-group > .btn.active, .btn.active, .btn-secondary.active {
   height: 2.1em;
   background: #B0AA92;
   color: #E0D5B7;
@@ -241,9 +243,49 @@ button.btn:hover {
   text-align: initial;
 }
 
+.datetimepicker {
+  background: #e0d5b7;
+  box-shadow: 0px 1px 3px rgba(0,0,0,.3);
+  border: 1px solid #817d6c;
+  border-radius: 0px;
+}
+
+.datetimepicker thead tr:first-child th:hover,
+.datetimepicker tfoot th:hover {
+  background: #b0aa92;
+}
+
+.datetimepicker td, .datetimepicker th {
+  border-radius: 0px;
+  border: 0;
+}
+
+.datetimepicker table tr td.day:hover,
+.datetimepicker table tr td span:hover {
+  background: #b0aa92;
+}
+
+.datetimepicker table tr td.old,
+.datetimepicker table tr td.new {
+  color: #8a8072;
+}
+
+.datetimepicker table tr td.active:active, .datetimepicker table tr td.active:hover:active, .datetimepicker table tr td.active.disabled:active, .datetimepicker table tr td.active.disabled:hover:active, .datetimepicker table tr td.active.active, .datetimepicker table tr td.active:hover.active, .datetimepicker table tr td.active.disabled.active, .datetimepicker table tr td.active.disabled:hover.active, .datetimepicker table tr td span.active:active, .datetimepicker table tr td span.active:hover:active, .datetimepicker table tr td span.active.disabled:active, .datetimepicker table tr td span.active.disabled:hover:active, .datetimepicker table tr td span.active.active, .datetimepicker table tr td span.active:hover.active, .datetimepicker table tr td span.active.disabled.active, .datetimepicker table tr td span.active.disabled:hover.active {
+   background-color: #ad5e39;
+}
+
+.datetimepicker table tr td.active, .datetimepicker table tr td.active:hover, .datetimepicker table tr td.active.disabled, .datetimepicker table tr td.active.disabled:hover, .datetimepicker table tr td span.active, .datetimepicker table tr td span.active:hover, .datetimepicker table tr td span.active.disabled, .datetimepicker table tr td span.active.disabled:hover {
+  background-image: none;
+  background-color: #ad5e39;
+}
+
+[class*=" datetimepicker-dropdown"]::after {
+  border-bottom: 6px solid #e0d5b7;
+}
+
 @media screen and (max-width: 500px) {
   h1 {
-    font-size: 50px;
+    font-size: 45px;
   }
   
   body {

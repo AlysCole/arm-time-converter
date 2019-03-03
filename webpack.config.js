@@ -29,7 +29,6 @@ module.exports = {
       template: path.join(__dirname, 'src/index.html'),
       filename: 'index.html'
     }),
-    /*
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
@@ -37,7 +36,6 @@ module.exports = {
       Popper: ['popper.js', 'default'],
       'moment': 'moment'
     })
-    */
   ],
   module: {
     loaders: [

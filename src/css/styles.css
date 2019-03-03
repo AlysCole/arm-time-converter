@@ -12,13 +12,28 @@ body {
   color: #474547;
 }
 
-select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+.form-control, select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
   font-family: "Raleway", sans-serif;
-  border-radius: 0;
-  color: #474547;
-  background: #B0AA92;
   border: none;
-  
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  border-bottom: 2px solid #474547;
+  color: #474547;
+  height: 2.1em;
+}
+
+.form-control:focus {
+  color: inherit;
+  background: none;
+  outline: 0;
+  border-bottom: 2px solid #b0aa92;
+  box-shadow: inset 0 0 0px 2px rgba(255,247,212,.2);
+  box-shadow: none;
+}
+
+.form-group label {
+  margin-bottom: 0px;
 }
 
 h1 {
@@ -92,20 +107,23 @@ pre {
 }
 
 #rl-time-body, #z-time-body {
+  padding: 0 20px;
   text-align: center;
   margin: 10px 0 10px 0;
   flex-grow: 1;
+  flex-basis: 25%;
 }
 
 #zalanthan-time-form {
+  text-align: left;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-flow: column wrap;
+  flex-flow: row wrap;
 }
 
-#zalanthan-time-form > div {
-  margin: 0 10px 0 10px;
+#zalanthan-time-form > .form-group {
+  flex-basis: auto;
+  flex-grow: 1;
+  margin: 0px 5px 10px;
 }
 
 #zalanthan-time {
@@ -138,18 +156,24 @@ pre {
   font-style: italic;
 }
 
+#rl-time-picker {
+  margin: 0;
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: 3fr 1fr 1fr;
+}
+
+#rl-time-picker > #datetimepicker1 {
+  flex-wrap: nowrap;
+}
+
 #datetimepicker-input {
-  width: 40%;
-  border: none;
   border-radius: 0;
-  background: none;
-  box-shadow: none;
-  border-bottom: 1px solid #474547;
   color: #474547;
 }
 
-.input-append .add-on, .input-prepend .add-on {
-  height: 1.5em;
+.input-group-append > .input-group-text, .input-prepend .add-on {
+  height: 2.1em;
   background: #474547;
   color: #E0D5B7;
   border: none;
@@ -162,12 +186,11 @@ pre {
 #today-btn {
   text-transform: uppercase;
   border-radius: 0px;
-  margin-left: 5px;
 }
 
 .btn {
   font-family: "Inconsolata", serif;
-  height: 2.1em;
+  line-height: 1.4em;
   color: #E0D5B7;
   background: #474547;
   border: none;
@@ -181,8 +204,11 @@ pre {
   color: #E0D5B7;
 }
 
-.btn-group > .btn:focus, .btn:focus, .btn-group > .btn:active, .btn:active, .btn-group > .btn.active, .btn.active, .btn-secondary.active {
-  height: 2.1em;
+.btn-group > .btn {
+  border-radius: 5px;
+}
+
+.btn-group > .btn:focus, .btn:focus, .btn-group > .btn:active, .btn:active, .btn-group > .btn.active, .btn.active, .btn-secondary.active, .btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active, .show > .btn-secondary.dropdown-toggle {
   background: #B0AA92;
   color: #E0D5B7;
   box-shadow: none;
@@ -210,11 +236,14 @@ pre {
   margin: 0;
 }
 
-.alert > a, .alert-info > a {
- border-bottom: 1px dotted #e0d5b7;
+.alert > a.alert-link, .alert-info > a.alert-link {
+  color: inherit;
+  border-bottom: 1px dotted #e0d5b7;
+  font-style: none;
+  font-weight: normal;
 }
 
-.alert > a:hover, .alert-info > a:hover {
+.alert > a.alert-link:hover, .alert-info > a.alert-link:hover {
   color: #474547;
   border-bottom: 1px dotted #474547;
 }
@@ -222,7 +251,6 @@ pre {
 .nav-pills {
   margin-bottom: 0;
   margin-top: 5px;
-  display: inline-block;
 }
 
 .nav-tabs > li > a,
@@ -234,7 +262,7 @@ pre {
   border-radius: 0;
 }
 
-.nav-pills > .active > a, .nav-pills > .active > a:hover, .nav-pills > .active > a:focus {
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color:#474547;
   background: #B0AA92;
 }
@@ -243,57 +271,100 @@ pre {
   text-align: initial;
 }
 
-.datetimepicker {
-  background: #e0d5b7;
-  box-shadow: 0px 1px 3px rgba(0,0,0,.3);
-  border: 1px solid #817d6c;
-  border-radius: 0px;
+.dropdown-menu {
+  background: #E0D5B7;
+  box-shadow: 0px 0px 1px rgba(0,0,0,.3);
+  border: 1px solid rgba(0,0,0,.3);
+  border-radius: 5px;
+  color: #474547;
 }
 
-.datetimepicker thead tr:first-child th:hover,
-.datetimepicker tfoot th:hover {
-  background: #b0aa92;
+.datepicker {
+  color: #474547;
 }
 
-.datetimepicker td, .datetimepicker th {
-  border-radius: 0px;
-  border: 0;
+.datepicker .table.table-sm {
+  color: #474547;
 }
 
-.datetimepicker table tr td.day:hover,
-.datetimepicker table tr td span:hover {
-  background: #b0aa92;
+.bootstrap-datetimepicker-widget.dropdown-menu.bottom::after {
+  border-bottom-color: #E0D5B7;
 }
 
-.datetimepicker table tr td.old,
-.datetimepicker table tr td.new {
-  color: #8a8072;
+.bootstrap-datetimepicker-widget table thead tr:first-child th:hover {
+  background: #B0AA92;
 }
 
-.datetimepicker table tr td.active:active, .datetimepicker table tr td.active:hover:active, .datetimepicker table tr td.active.disabled:active, .datetimepicker table tr td.active.disabled:hover:active, .datetimepicker table tr td.active.active, .datetimepicker table tr td.active:hover.active, .datetimepicker table tr td.active.disabled.active, .datetimepicker table tr td.active.disabled:hover.active, .datetimepicker table tr td span.active:active, .datetimepicker table tr td span.active:hover:active, .datetimepicker table tr td span.active.disabled:active, .datetimepicker table tr td span.active.disabled:hover:active, .datetimepicker table tr td span.active.active, .datetimepicker table tr td span.active:hover.active, .datetimepicker table tr td span.active.disabled.active, .datetimepicker table tr td span.active.disabled:hover.active {
-   background-color: #ad5e39;
+.bootstrap-datetimepicker-widget table td.day:hover, .bootstrap-datetimepicker-widget table td.hour:hover, .bootstrap-datetimepicker-widget table td.minute:hover, .bootstrap-datetimepicker-widget table td.second:hover, .bootstrap-datetimepicker-widget table td span:hover {
+  background: #B0AA92;
 }
 
-.datetimepicker table tr td.active, .datetimepicker table tr td.active:hover, .datetimepicker table tr td.active.disabled, .datetimepicker table tr td.active.disabled:hover, .datetimepicker table tr td span.active, .datetimepicker table tr td span.active:hover, .datetimepicker table tr td span.active.disabled, .datetimepicker table tr td span.active.disabled:hover {
-  background-image: none;
-  background-color: #ad5e39;
+.bootstrap-datetimepicker-widget table td.active, .bootstrap-datetimepicker-widget table td.active:hover, .bootstrap-datetimepicker-widget table td span.active {
+  background: none;
+  color: #E0D5B7;
+  background-color: #474547;
 }
 
-[class*=" datetimepicker-dropdown"]::after {
-  border-bottom: 6px solid #e0d5b7;
+.bootstrap-datetimepicker-widget .table > thead > tr > th {
+  border: none;
 }
 
-@media screen and (max-width: 500px) {
+.bootstrap-datetimepicker-widget a[data-action],
+.bootstrap-datetimepicker .table a {
+  border: none;
+  color: #ad5e39;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.bootstrap-datetimepicker-widget table td.day {
+  border: none;
+}
+
+.bootstrap-datetimepicker-widget table td.today::before {
+  border-bottom-color: #ad5e39;
+}
+
+.bootstrap-datetimepicker-widget table td span {
+  line-height: none;
+}
+
+@media screen and (max-width: 800px) {
+  body {
+    padding: 5px;
+  }
+  div#body {
+    margin: 0 5px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  #rl-time-picker {
+    grid-template-columns: 1fr;
+  }
+
   h1 {
     font-size: 45px;
   }
-  
-  body {
-    padding: 5px;
-    margin: 5px;
+}
+
+@media screen and (max-width: 400px) {
+  h1 {
+    font-size: 40px;
+    font-size: 9vw;
   }
 
-  div#body {
-    margin: 0 5px;
+  h2 {
+    font-size: 30px;
+    font-size: 8vw;
+  }
+
+  h3 {
+    font-size: 25px;
+    font-size: 7vw;
+  }
+
+  #local-time-time {
+    font-size: 25px;
   }
 }

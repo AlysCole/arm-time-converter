@@ -1,4 +1,13 @@
+var $ = require('jquery');
+require('bootstrap');
+require('moment');
+var moment = require('moment-timezone');
+require('tempusdominus-bootstrap-4');
 require('./index.html');
+
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import '../node_modules/tempusdominus-bootstrap-4/build/css/tempusdominus-bootstrap-4.min.css';
+import '../node_modules/font-awesome/css/font-awesome.min.css';
 import './css/styles.css';
 
 (function() {
@@ -10,6 +19,7 @@ import './css/styles.css';
   const zTMonthsPerZTYear = 3;
   const zTYearsPerZTAge = 77;
   const momentFormat = "YYYY-MM-DD HH:mm";
+  let timeZone = "America/New_York";
   let realTimeInterval;
 
   const hoursInDay = [
@@ -206,7 +216,7 @@ import './css/styles.css';
   };
 
   $(window).on("load", function() {
-    const pickerEl = $("#datetimepicker");
+    const pickerEl = $("#datetimepicker1");
     const pickerInput = $("#datetimepicker-input");
     const todayBtn = $("#today-btn");
     const formats = [
@@ -217,9 +227,28 @@ import './css/styles.css';
     let current = moment();
     let keepIntervalRunning = true;
 
-    $('#datetimepicker').datetimepicker({
-      format: "yyyy-mm-dd hh:ii",
-      timezone: "ET"
+    pickerEl.datetimepicker({
+      widgetPositioning: {
+        horizontal: 'auto',
+        vertical: 'bottom'
+      },
+      format: momentFormat,
+      timeZone: timeZone,
+      allowInputToggle: true,
+      keepOpen: true
+    });
+
+
+    $('#timezone-picker').on('change', function(data) {
+      const value = data.target.value;
+      if (value == "local") {
+        timeZone = ''; 
+      } else {
+        timeZone = "America/New_York";
+      }
+
+      pickerEl.datetimepicker('timeZone', timeZone);
+      console.log(pickerEl.datetimepicker('timeZone'));
     });
 
     if (document.URL.indexOf("#") > -1) {
@@ -251,15 +280,11 @@ import './css/styles.css';
 
     todayBtn.click(function() {
       let val = moment();
-      
-      if ($("#local-btn").hasClass("active")) {
+      if (timeZone)
+        pickerInput.val(val.tz(timeZone).format(momentFormat));
+      else
         pickerInput.val(val.format(momentFormat));
-      } else {
-        pickerInput.val(
-          val.tz("America/New_York").format(momentFormat)
-        );
-      }
-      
+
       setTimeHTML(val.toDate(), true, true);
       console.log("Date changed:", val);
       
@@ -271,16 +296,26 @@ import './css/styles.css';
       );
     });
 
-    pickerEl.on("changeDate", onChangeDate);
-    pickerInput.on('change', onChangeDate);
+    $('#datetimepicker1').on('change.datetimepicker', onChangeDate);
+    /*
+    pickerInput.on('input', onChangeDate);
+    */
 
-    function onChangeDate() {
+    function onChangeDate(data) {
       let val = pickerInput.val();
+      console.log("Time changed:" + val);
       if (!moment(val, momentFormat, true).isValid()) return false;
 
-      console.log("Date changed:", val);
+      let date = data.date || $('#datetimepicker1').datetimepicker('date');
+
+      history.pushState(history.state, "", "?t=" + date.tz("America/New_York").format(momentFormat));
+      setTimeHTML(date.toDate());
+
+      /*
       // If set to local time, convert value to New York time and set hash to that value
-      if ($("#local-btn").hasClass("active")) {
+      let selectedTimezone = $('input[name=timezone]:checked').val();
+      if (selectedTimezone == "local") {
+        console.log("Local is selected.");
         let time = moment(val, momentFormat);
         history.pushState(history.state, "", "?t=" + time.tz("America/New_York").format(momentFormat));
         setTimeHTML(time.toDate());
@@ -290,6 +325,7 @@ import './css/styles.css';
           moment.tz(val, momentFormat, "America/New_York").toDate()
         );
       }
+      */
     }
 
     $("#zalanthan-time-form").change(function(e) {

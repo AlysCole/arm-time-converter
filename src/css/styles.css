@@ -121,7 +121,7 @@ pre {
 }
 
 #zalanthan-time-form > .form-group {
-  flex-basis: auto;
+  flex-basis: 30%;
   flex-grow: 1;
   margin: 0px 5px 10px;
 }

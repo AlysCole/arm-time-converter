@@ -1,13 +1,12 @@
 var $ = require('jquery');
 require('bootstrap');
 require('moment');
-var moment = require('moment-timezone');
+require('../node_modules/moment-timezone/builds/moment-timezone-with-data-2012-2022.min.js');
 require('tempusdominus-bootstrap-4');
 require('./index.html');
 
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/tempusdominus-bootstrap-4/build/css/tempusdominus-bootstrap-4.min.css';
-import '../node_modules/font-awesome/css/font-awesome.min.css';
 import './css/styles.css';
 
 (function() {
@@ -157,9 +156,13 @@ import './css/styles.css';
     const offsetInRLSeconds = offsetInRLMinutes * 60;
     const offsetInRLMilliseconds = offsetInRLSeconds * 1000;
 
+    console.log(`baseTimeInHours: ${baseTimeInHours}`);
+    console.log(`Hours: ${offsetInZTHours}`);
+
     const unixTime = baseTime.getTime() + offsetInRLMilliseconds;
     const dateObj = new Date(unixTime);
     console.log(dateObj);
+    console.log(moment(dateObj).tz("America/New_York").format());
     return dateObj;
   };
 
@@ -272,6 +275,9 @@ import './css/styles.css';
       });
 
       current = moment.tz(decodeURI(matchQuery[1]), "America/New_York");
+      console.log(current);
+      console.log(current.format());
+      console.log(current.toDate().toISOString());
       keepIntervalRunning = false;
     }
 
@@ -285,7 +291,7 @@ import './css/styles.css';
       else
         pickerInput.val(val.format(momentFormat));
 
-      setTimeHTML(val.toDate(), true, true);
+      setTimeHTML(val.toDate(), false, true);
       console.log("Date changed:", val);
       
       // clear hash value

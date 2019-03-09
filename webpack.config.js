@@ -35,7 +35,8 @@ module.exports = {
       'window.jQuery': 'jquery',
       Popper: ['popper.js', 'default'],
       'moment': 'moment'
-    })
+    }),
+    new ExtractTextPlugin('styles.css')
   ],
   module: {
     loaders: [
@@ -48,7 +49,10 @@ module.exports = {
       {
         test: /\.css$/,
         exclude: '/node_modules/',
-        loader: 'style-loader!css-loader'
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: 'css-loader'
+        })
       },
       {
         test: /\.html$/,

@@ -1,7 +1,7 @@
 var $ = require('jquery');
 require('bootstrap');
 require('moment');
-require('../node_modules/moment-timezone/builds/moment-timezone-with-data-2012-2022.min.js');
+require('../node_modules/moment-timezone/builds/moment-timezone-with-data-1970-2030.js');
 require('tempusdominus-bootstrap-4');
 require('./index.html');
 
@@ -241,7 +241,6 @@ import './css/styles.css';
       keepOpen: true
     });
 
-
     $('#timezone-picker').on('change', function(data) {
       const value = data.target.value;
       if (value == "local") {
@@ -282,7 +281,7 @@ import './css/styles.css';
     }
 
     pickerInput.val(current.tz("America/New_York").format(momentFormat));
-    setTimeHTML(current.toDate(), true);
+    setTimeHTML(current.toDate(), false, keepIntervalRunning);
 
     todayBtn.click(function() {
       let val = moment();

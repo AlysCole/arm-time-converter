@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Inconsolata|Playfair+Display:400,400i|Raleway');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,400i|Playfair+Display:400,400i|Raleway');
 
 body {
-  font-family: "Inconsolata", mono;
+  font-family: "Ubuntu Mono", mono;
   font-size: 15px;
   /*! background-image: url("https://images.pexels.com/photos/459319/pexels-photo-459319.jpeg"); */
   background-size: cover;
@@ -85,7 +85,7 @@ div#body {
 pre {
   padding: 10px 10px;
   color: #474547;
-  font-family: "Inconsolata", mono;
+  font-family: "Ubuntu Mono", mono;
   border-radius: 0;
   border: none;
   border-top: 2px solid #474547;
@@ -189,7 +189,7 @@ pre {
 }
 
 .btn {
-  font-family: "Inconsolata", serif;
+  font-family: "Ubuntu Mono", mono;
   line-height: 1.4em;
   color: #E0D5B7;
   background: #474547;

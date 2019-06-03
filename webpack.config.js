@@ -9,7 +9,7 @@ module.exports = {
     hot: true,
     inline: true,
     progress: true,
-    contentBase: path.join(__dirname, 'build'),
+    contentBase: path.join(__dirname),
     watchContentBase: true
   },
   entry: {
@@ -20,7 +20,7 @@ module.exports = {
     ]
   },
   output: {
-    path: path.resolve(__dirname, "build/"),
+    path: path.resolve(__dirname),
     filename: "bundle.js"
   },
   plugins: [

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width" /> 
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <title>Armageddon Time Converter</title>
+<link href="styles.css" rel="stylesheet"></head>
+<body>
+    <h1>Armageddon Time Converter</h1>
+    <div id="body">
+    <div id="zalanthan-time">
+        It <span id="zalanthan-tense"></span> <span id="zalanthan-hour"></span> on the day of <span id="zalanthan-day-name"></span>, the <span id="zalanthan-day"></span> day of the <span id="zalanthan-month"></span>, in the year of <span id="zalanthan-year-name"></span>, year <span id="zalanthan-year"></span> of the <span id="zalanthan-age"></span> age.
+        <div id="rl-time">
+            <div id="local-time-container" title="Local time">
+                <div id="local-time-time"></div>
+                <div id="local-time-date"></div>
+            </div>
+            <div>
+                <a id="edt-time" title="Server time (Eastern Time)"></a>
+            </div>
+            <div id="time-from-now"></div>
+        </div>
+    </div>
+    <div id="time-converter-form">
+        <div id="rl-time-body">
+            <h3>RL Time</h3>
+            <div id="rl-time-picker">
+                <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                    <input size="16" type="text" class="form-control datetimepicker-input" id="datetimepicker-input" data-target="#datetimepicker1" />
+                    <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                    </div>
+                </div>
+                <div id="timezone-picker" class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="timezone"  id="local-btn" value="local"><i class="fa fa-clock-o" aria-hidden="true"></i>
+                    </label>
+                    <label class="btn btn-secondary active">
+                        <input type="radio" name="timezone" id="server-btn" value="server" checked=""><i class="fa fa-globe" aria-hidden="true"></i>
+                    </label>
+                </div>
+                <button id="today-btn" type="button" class="btn">Today</button>
+            </div>
+        </div>
+        <div id="z-time-body">
+            <h3>Zalanthan Time</h3>
+            <form id="zalanthan-time-form">
+                <div class="form-group">
+                    <label for="hour-selector">Hour</label>
+                    <select id="hour-selector" class="form-control">
+                        <option disabled selected value="">-- select hour --</option>
+                        <option value="1">before dawn</option>
+                        <option value="2">dawn</option>
+                        <option value="3">early morning</option>
+                        <option value="4">late morning</option>
+                        <option value="5">high sun</option>
+                        <option value="6">early afternoon</option>
+                        <option value="7">late afternoon</option>
+                        <option value="8">dusk</option>
+                        <option value="9">late at night</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="day-selector">Day</label>
+                    <input class="form-control" id="day-selector" type="number" min="1" max="231" size="20" placeholder="day of month">
+                </div>
+                <div class="form-group">
+                    <label for="month-selector">Month</label>
+                    <select class="form-control" id="month-selector">
+                        <option disabled selected value>-- select month --</option>
+                        <option value="1">Descending Sun</option>
+                        <option value="2">Low Sun</option>
+                        <option value="3">Ascending Sun</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="year-selector">Year</label>
+                    <input class="form-control" id="year-selector" type="number" min="1" max="77" size ="30" placeholder="year">
+                </div>
+                <div class="form-group">
+                    <label for="age-selector">Age</label>
+                    <input class="form-control" id="age-selector" type="number" placeholder="age">
+                </div>
+        </ul>
+            </form>
+        </div>
+    </div>
+    <h2>Help: Time</h2>
+    <div class="alert alert-info">
+        Refer to Armageddon's <a class="alert-link" href="http://armageddon.org/help/view/time">Time</a> help file for more information.
+    </div>
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#days" role="tab">Days</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#hours" role="tab">Hours</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#months" role="tab">Months</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#conversion" role="tab">Conversion</a>
+        </li>
+    </ul>
+    
+    <div class="tab-content">
+        <div class="tab-pane" id="days" role="tabpanel">
+            <pre><code>Days of the Week (11)
+Ocandra
+Terrin
+Abid
+Cingel
+Nekrete
+Waleuk
+Yochem
+Huegel
+Dzeda
+Barani
+Detal</code></pre>
+        </div>
+        <div class="tab-pane" id="hours" role="tabpanel">
+            <pre><code>Hours in the Day (9)
+before dawn
+dawn
+early morning
+late morning
+high sun
+early afternoon
+late afternoon
+dusk
+late at night</code></pre>
+        </div>
+        <div class="tab-pane" id="months" role="tabpanel">
+            <pre><code>Months in the Year (3)  
+Descending Sun 
+Low Sun 
+Ascending Sun</code></pre>
+        </div>
+        <div class="tab-pane" id="conversion" role="tabpanel">
+            <pre><code>Real Time -> Zalanthan Time  
+     10 RL mins      = 1 ZT hour 
+     1 RL day        = 16 ZT days 
+     1 RL week       = ~0.5 ZT month 
+     1 RL month      = ~2 ZT months 
+     1 RL year       = ~8.5 ZT years
+          
+Zalanthan Time -> Real Time  
+     1 ZT hour       = 10 RL mins 
+     1 ZT day        = 90 RL mins 
+     1 ZT week       = 16.5 RL hours 
+     1 ZT month      = ~2 RL weeks 
+     1 ZT year       = ~43 RL days</code></pre>
+        </div>
+    </div>
+    </div>
+<script type="text/javascript" src="bundle.js"></script></body>
+</html>

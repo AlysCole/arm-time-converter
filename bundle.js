@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "ae2def3b7381f3e92b78"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "418da8b012a0482fdca8"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -28338,7 +28338,6 @@ __webpack_require__(129);
     const todayBtn = $("#today-btn");
     const formats = [momentFormat, "YYYY-MM-DD hh:mm A", "YYYY-MM-DD hh:mm a"];
     let current = moment();
-    let keepIntervalRunning = true;
 
     pickerEl.datetimepicker({
       widgetPositioning: {
@@ -28363,6 +28362,8 @@ __webpack_require__(129);
       console.log(pickerEl.datetimepicker('timeZone'));
     });
 
+    let keepIntervalRunning = true;
+
     if (document.URL.indexOf("#") > -1) {
       let hashVal = decodeURI(document.URL.slice(document.URL.indexOf("#") + 1));
       current = moment.tz(hashVal, "America/New_York");
@@ -28382,9 +28383,6 @@ __webpack_require__(129);
       });
 
       current = moment.tz(decodeURI(matchQuery[1]), "America/New_York");
-      console.log(current);
-      console.log(current.format());
-      console.log(current.toDate().toISOString());
       keepIntervalRunning = false;
     }
 
@@ -28440,8 +28438,6 @@ __webpack_require__(129);
 
       setTimeHTML(dateObj, true, false);
     });
-
-    if (keepIntervalRunning) startTimeInterval();
   });
 })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))

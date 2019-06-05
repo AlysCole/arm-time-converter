@@ -228,7 +228,6 @@ import './css/styles.css';
       "YYYY-MM-DD hh:mm a"
     ];
     let current = moment();
-    let keepIntervalRunning = true;
 
     pickerEl.datetimepicker({
       widgetPositioning: {
@@ -253,6 +252,8 @@ import './css/styles.css';
       console.log(pickerEl.datetimepicker('timeZone'));
     });
 
+    let keepIntervalRunning = true;
+
     if (document.URL.indexOf("#") > -1) {
       let hashVal = decodeURI(
         document.URL.slice(document.URL.indexOf("#") + 1)
@@ -274,9 +275,6 @@ import './css/styles.css';
       });
 
       current = moment.tz(decodeURI(matchQuery[1]), "America/New_York");
-      console.log(current);
-      console.log(current.format());
-      console.log(current.toDate().toISOString());
       keepIntervalRunning = false;
     }
 
@@ -350,8 +348,5 @@ import './css/styles.css';
 
       setTimeHTML(dateObj, true, false);
     });
-
-    if (keepIntervalRunning)
-      startTimeInterval();
   });
 })();

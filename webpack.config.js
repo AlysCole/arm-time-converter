@@ -9,7 +9,7 @@ module.exports = {
     hot: true,
     inline: true,
     progress: true,
-    contentBase: path.join(__dirname),
+    contentBase: path.resolve(__dirname),
     watchContentBase: true
   },
   entry: {

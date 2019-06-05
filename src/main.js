@@ -314,23 +314,7 @@ import './css/styles.css';
       let date = data.date || $('#datetimepicker1').datetimepicker('date');
 
       history.pushState(history.state, "", "?t=" + date.tz("America/New_York").format(momentFormat));
-      setTimeHTML(date.toDate());
-
-      /*
-      // If set to local time, convert value to New York time and set hash to that value
-      let selectedTimezone = $('input[name=timezone]:checked').val();
-      if (selectedTimezone == "local") {
-        console.log("Local is selected.");
-        let time = moment(val, momentFormat);
-        history.pushState(history.state, "", "?t=" + time.tz("America/New_York").format(momentFormat));
-        setTimeHTML(time.toDate());
-      } else {
-        history.pushState(history.state, "", "?t=" + val);
-        setTimeHTML(
-          moment.tz(val, momentFormat, "America/New_York").toDate()
-        );
-      }
-      */
+      setTimeHTML(date.toDate(), false, false);
     }
 
     $("#zalanthan-time-form").change(function(e) {
@@ -364,7 +348,7 @@ import './css/styles.css';
                           moment(dateObj).tz("America/New_York").format(momentFormat)
                         ));
 
-      setTimeHTML(dateObj, true);
+      setTimeHTML(dateObj, true, false);
     });
 
     if (keepIntervalRunning)

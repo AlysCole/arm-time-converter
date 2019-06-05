@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "de2f042f8969bc8fb270"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "ae2def3b7381f3e92b78"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -28415,23 +28415,7 @@ __webpack_require__(129);
       let date = data.date || $('#datetimepicker1').datetimepicker('date');
 
       history.pushState(history.state, "", "?t=" + date.tz("America/New_York").format(momentFormat));
-      setTimeHTML(date.toDate());
-
-      /*
-      // If set to local time, convert value to New York time and set hash to that value
-      let selectedTimezone = $('input[name=timezone]:checked').val();
-      if (selectedTimezone == "local") {
-        console.log("Local is selected.");
-        let time = moment(val, momentFormat);
-        history.pushState(history.state, "", "?t=" + time.tz("America/New_York").format(momentFormat));
-        setTimeHTML(time.toDate());
-      } else {
-        history.pushState(history.state, "", "?t=" + val);
-        setTimeHTML(
-          moment.tz(val, momentFormat, "America/New_York").toDate()
-        );
-      }
-      */
+      setTimeHTML(date.toDate(), false, false);
     }
 
     $("#zalanthan-time-form").change(function (e) {
@@ -28454,7 +28438,7 @@ __webpack_require__(129);
 
       history.pushState(history.state, "", "?t=" + encodeURI(moment(dateObj).tz("America/New_York").format(momentFormat)));
 
-      setTimeHTML(dateObj, true);
+      setTimeHTML(dateObj, true, false);
     });
 
     if (keepIntervalRunning) startTimeInterval();

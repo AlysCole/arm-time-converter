@@ -39,7 +39,7 @@
     "bootstrap3": "^3.3.5",
     "eonasdan-bootstrap-datetimepicker": "^4.17.47",
     "font-awesome": "^4.7.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "moment-timezone": "^0.5.25",
     "tempusdominus-bootstrap-4": "^5.1.2"
   }
